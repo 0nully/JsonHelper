@@ -1,24 +1,21 @@
 package org.stackwizards.Json_helper;
 
-import java.util.ArrayList;
-
 public class Minion {
       public String Id;
-      public String SpriteSheetUrl ; //": "C:\\Users\\00nul\\OneDrive\\Desktop\baseGridFull.png",
-      public String SpriteSheetFilename ; //": "baseGridFull.png",
-      public String Name; //": "Small Pocket",
-      public int Attack ; //": 2,
-      public int Defense; //": 1,
-      public String Tribe; //": "Pirate",
-      public String Class; //": "Pirate",
-      public int X ; //": 600,
-      public int Y ; //": 1200,
-      public int Width; //": 300,
-      public int Height; //": 300,
-      public int Cost; //": 2,
-      public String Description; //": "n character"
-      public String RangeType; //": "n character"
-
+      public String SpriteSheetUrl ;
+      public String SpriteSheetFilename ;
+      public String Name;
+      public int Attack ;
+      public int Defense;
+      public String Tribe;
+      public String Class;
+      public int X ;
+      public int Y ;
+      public int Width;
+      public int Height;
+      public int Cost;
+      public String Description;
+      public String RangeType;
 //      public ArrayList<Ability> Abilities;
 
       public Minion(){
