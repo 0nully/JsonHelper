@@ -1,0 +1,2 @@
+include ':app', ':jsonloader'
+rootProject.name='JsonHelper'
