@@ -1,12 +1,12 @@
 # JsonHelper
 How to use 
-Add it to your #build.gradle :
+Add it to your build.gradle :
 
 allprojects {
     repositories {
-        google()
-        jcenter()
-    ## maven { url "https://jitpack.io" } ##
+*        google()
+*        jcenter()
+*    ## maven { url "https://jitpack.io" } ##
     }
 }
 
@@ -44,5 +44,5 @@ implements IUtilHandler
 
 
 reminders:
-https://jitpack.io/com/github/0nully/JsonHelper/v0.0/build.log
-git push -u origin master
+* https://jitpack.io/com/github/0nully/JsonHelper/v0.0/build.log
+* git push -u origin master
