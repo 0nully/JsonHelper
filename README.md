@@ -25,6 +25,24 @@ dependencies {
 }
 
 
+implements IUtilHandler
+
+    @Override
+    public <T> List<T> onReceive(List<T> objs) {
+        for (Object l : objs) {
+            Log.d("UrlUtils", ((Minion) l).Name);
+        }
+        return null;
+    }
+    
+
+    UrlUtils.setContext(this)
+                .setCallbackHandler(this)
+                .setTypeCollection(Minion.class)
+                .urlRequest("http://nully000-001-site1.atempurl.com/hexo_data.json");
+
+
+
 reminders:
 https://jitpack.io/com/github/0nully/JsonHelper/v0.0/build.log
 git push -u origin master
