@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import org.stackwizards.jsonloader.IUtilHandler;
+import org.stackwizards.jsonloader.IUrlRequestHandler;
 import org.stackwizards.jsonloader.UrlUtils;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements IUtilHandler {
+public class MainActivity extends AppCompatActivity implements IUrlRequestHandler {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements IUtilHandler {
     }
 
     @Override
-    public <T> List<T> onReceive(List<T> objs) {
+    public <T> List<T> onComplete(List<T> objs) {
         for (Object l : objs) {
             Log.d("UrlUtils", ((Minion) l).Name);
         }

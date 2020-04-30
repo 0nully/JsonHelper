@@ -13,7 +13,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
@@ -23,7 +22,7 @@ import java.util.List;
 public class UrlUtils {
     private static RequestQueue mQueue;
     private static Type collectionType;
-    private static IUtilHandler callback;
+    private static IUrlRequestHandler callback;
     private static UrlUtils urlUtils;
 
     public static UrlUtils setContext(Context context) {
@@ -31,7 +30,7 @@ public class UrlUtils {
         return urlUtils;
     }
 
-    public static UrlUtils setCallbackHandler(IUtilHandler handler) {
+    public static UrlUtils setCallbackHandler(IUrlRequestHandler handler) {
         callback = handler;
         return urlUtils;
     }
@@ -50,7 +49,7 @@ public class UrlUtils {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.d("UrlUtils", "RESPONSE: " + response.toString());
-                        callback.onReceive(parseJsonToListCollectionType(response.toString()));
+                        callback.onComplete(parseJsonToListCollectionType(response.toString()));
                     }
                 }, new Response.ErrorListener() {
             @Override
