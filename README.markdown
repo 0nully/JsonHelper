@@ -4,8 +4,8 @@ Add it to your build.gradle :
 
 allprojects {
     repositories {
-*        google()
-*        jcenter()
+        google()
+        jcenter()
 *    ## maven { url "https://jitpack.io" } ##
     }
 }
@@ -24,9 +24,15 @@ dependencies {
  *   androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }
 
+    
+# Usage
+    UrlUtils.setContext(this)
+                .setCallbackHandler(this)
+                .setTypeCollection(Minion.class)
+                .urlRequest("http://nully000-001-site1.atempurl.com/hexo_data.json");
 
-implements IUtilHandler
 
+# implements IUtilHandler
     @Override
     public <T> List<T> onReceive(List<T> objs) {
         for (Object l : objs) {
@@ -34,14 +40,6 @@ implements IUtilHandler
         }
         return null;
     }
-    
-
-    UrlUtils.setContext(this)
-                .setCallbackHandler(this)
-                .setTypeCollection(Minion.class)
-                .urlRequest("http://nully000-001-site1.atempurl.com/hexo_data.json");
-
-
 
 reminders:
 * https://jitpack.io/com/github/0nully/JsonHelper/v0.0/build.log
