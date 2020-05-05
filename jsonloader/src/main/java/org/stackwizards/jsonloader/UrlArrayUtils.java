@@ -19,43 +19,44 @@ import org.json.JSONTokener;
 import java.lang.reflect.Type;
 import java.util.List;
 
-public class UrlUtils {
+public class UrlArrayUtils {
+    private static String TAG = "HELPER_UTILS";
     private static RequestQueue mQueue;
     private static Type collectionType;
-    private static IUrlRequestHandler callback;
-    private static UrlUtils urlUtils;
+    private static IUrlRequestArrayHandler callback;
+    private static UrlArrayUtils Instance;
 
-    public static UrlUtils setContext(Context context) {
+    public static UrlArrayUtils setContext(Context context) {
         mQueue = Volley.newRequestQueue(context);
-        return urlUtils;
+        return Instance;
     }
 
-    public static UrlUtils setCallbackHandler(IUrlRequestHandler handler) {
+    public static UrlArrayUtils setCallbackHandler(IUrlRequestArrayHandler handler) {
         callback = handler;
-        return urlUtils;
+        return Instance;
     }
 
-    public static UrlUtils setTypeCollection(Type type) {
+    public static UrlArrayUtils setType(Type type) {
         collectionType = TypeToken.getParameterized(List.class, type).getType();
-        return urlUtils;
+        return Instance;
     }
 
     public static void urlRequest(final String url) {
         if (mQueue == null || callback == null || collectionType == null) {
-            throw new NullPointerException("UrlUtils: mQueue or callback or collectionType were not set");
+            throw new NullPointerException("UrlArrayUtils: mQueue or callback or collectionType were not set");
         }
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.d("UrlUtils", "RESPONSE: " + response.toString());
+                        Log.d(TAG, "Got response from :" + url);
                         callback.onComplete(parseJsonToListCollectionType(response.toString()));
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
-                Log.d("UrlUtils", "SOMETHING WENT WRONG WHILE GETTING JSON DATA FROM URL: " + url);
+                Log.d(TAG, "SOMETHING WENT WRONG WHILE GETTING JSON DATA FROM URL: " + url);
             }
         });
         mQueue.add(request);
@@ -65,7 +66,7 @@ public class UrlUtils {
         checkJsonContentIsOfTypeArray(json);
         Gson gson = new Gson();
         List<T> list = gson.fromJson(json, collectionType);
-        Log.d("UrlUtils", "SIZE: " + list.size());
+        Log.d(TAG, "SIZE: " + list.size());
         return list;
     }
 
@@ -74,11 +75,11 @@ public class UrlUtils {
         try {
             json = new JSONTokener(data).nextValue();
             if (json instanceof JSONObject) {
-                throw new Exception("UrlUtils: expecting json array but received json object");
+                throw new Exception("UrlArrayUtils: expecting json array but received json object");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d("UrlUtils", "UrlUtils: Problem parsing json array");
+            Log.d(TAG, "UrlArrayUtils: Problem parsing json array");
         }
     }
 
