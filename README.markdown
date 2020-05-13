@@ -26,11 +26,15 @@ dependencies {
 
     
 # Usage
-    UrlUtils.setContext(this)
-                .setCallbackHandler(this)
-                .setTypeCollection(Minion.class)
-                .urlRequest("http://nully000-001-site1.atempurl.com/hexo_data.json");
+//        UrlArrayUtils.setContext(this)
+//                .setCallbackHandler(this)
+//                .setType(Minion.class)
+//                .urlRequest("http://nully000-001-site1.atempurl.com/hexo_data.json");
 
+        UrlSingleUtils.setContext(this)
+                .setCallbackHandler(this)
+                .setType(Request.class)
+                .urlRequest("https://api.edamam.com/search?q=beef&app_id=7b790015&app_key=15264eee8cbce932a6ab6af4a739b7c0&from=0&to=30");
 
 # implement callback IUrlRequestHandler
     @Override
