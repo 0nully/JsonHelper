@@ -138,9 +138,11 @@ And this will produce a flow chart:
 graph LR
 A[Square Rect] -- Link text --> B((Circle))
 A --> C(Round Rect)
+A --> C(Round Rect)
+A --> C(Round Rect)
 B --> D{Rhombus}
 C --> D
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzMjQ1NTM2M119
+eyJoaXN0b3J5IjpbMTk3MzE0Mjg3NywtMzMyNDU1MzYzXX0=
 -->
