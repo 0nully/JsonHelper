@@ -137,12 +137,12 @@ And this will produce a flow chart:
 ```mermaid
 graph LR
 A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-A --> C(Round Rect)
-A --> C(Round Rect)
+A -- hey --> E(Round Rect)
+E --> C(Round E)
+E --> D
 B --> D{Rhombus}
 C --> D
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3MzE0Mjg3NywtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbNjY1MTk0ODU2LC0zMzI0NTUzNjNdfQ==
 -->
